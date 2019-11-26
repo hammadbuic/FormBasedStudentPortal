@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.studentProfileBtn = new System.Windows.Forms.Button();
-            this.searchStudentBtn = new System.Windows.Forms.Button();
             this.searchPanel = new System.Windows.Forms.Panel();
             this.profilePanel = new System.Windows.Forms.Panel();
             this.idLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.deleteStudentBtn = new System.Windows.Forms.Button();
-            this.topThreeBtn = new System.Windows.Forms.Button();
-            this.markAttenBtn = new System.Windows.Forms.Button();
-            this.viewAttenBtn = new System.Windows.Forms.Button();
             this.idText = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.gpaLabel = new System.Windows.Forms.Label();
@@ -49,39 +42,30 @@
             this.gpaText = new System.Windows.Forms.TextBox();
             this.nameText = new System.Windows.Forms.TextBox();
             this.enterRecord = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.createProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchByIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchByNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listOfAllStudentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.top3StudentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markAttendanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewAttendanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchIdText = new System.Windows.Forms.TextBox();
+            this.searchIdBtn = new System.Windows.Forms.Button();
             this.searchPanel.SuspendLayout();
             this.profilePanel.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // studentProfileBtn
-            // 
-            this.studentProfileBtn.BackColor = System.Drawing.Color.Gray;
-            this.studentProfileBtn.Location = new System.Drawing.Point(0, 3);
-            this.studentProfileBtn.Name = "studentProfileBtn";
-            this.studentProfileBtn.Size = new System.Drawing.Size(129, 33);
-            this.studentProfileBtn.TabIndex = 0;
-            this.studentProfileBtn.Text = "Create Profile";
-            this.studentProfileBtn.UseVisualStyleBackColor = false;
-            this.studentProfileBtn.Click += new System.EventHandler(this.Button1_Click);
-            // 
-            // searchStudentBtn
-            // 
-            this.searchStudentBtn.BackColor = System.Drawing.Color.Gray;
-            this.searchStudentBtn.Location = new System.Drawing.Point(124, 3);
-            this.searchStudentBtn.Name = "searchStudentBtn";
-            this.searchStudentBtn.Size = new System.Drawing.Size(129, 33);
-            this.searchStudentBtn.TabIndex = 1;
-            this.searchStudentBtn.Text = "Search Student";
-            this.searchStudentBtn.UseVisualStyleBackColor = false;
-            this.searchStudentBtn.Click += new System.EventHandler(this.Button2_Click);
             // 
             // searchPanel
             // 
+            this.searchPanel.Controls.Add(this.searchIdBtn);
+            this.searchPanel.Controls.Add(this.searchIdText);
             this.searchPanel.Controls.Add(this.label2);
-            this.searchPanel.Location = new System.Drawing.Point(492, 282);
+            this.searchPanel.Location = new System.Drawing.Point(492, 97);
             this.searchPanel.Name = "searchPanel";
-            this.searchPanel.Size = new System.Drawing.Size(200, 100);
+            this.searchPanel.Size = new System.Drawing.Size(333, 341);
             this.searchPanel.TabIndex = 2;
             this.searchPanel.Visible = false;
             // 
@@ -116,65 +100,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 30);
+            this.label2.Location = new System.Drawing.Point(12, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(24)))), ((int)(((byte)(50)))));
-            this.panel3.Controls.Add(this.viewAttenBtn);
-            this.panel3.Controls.Add(this.markAttenBtn);
-            this.panel3.Controls.Add(this.topThreeBtn);
-            this.panel3.Controls.Add(this.deleteStudentBtn);
-            this.panel3.Controls.Add(this.studentProfileBtn);
-            this.panel3.Controls.Add(this.searchStudentBtn);
-            this.panel3.Location = new System.Drawing.Point(0, 52);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(856, 39);
-            this.panel3.TabIndex = 4;
-            // 
-            // deleteStudentBtn
-            // 
-            this.deleteStudentBtn.BackColor = System.Drawing.Color.Gray;
-            this.deleteStudentBtn.Location = new System.Drawing.Point(248, 3);
-            this.deleteStudentBtn.Name = "deleteStudentBtn";
-            this.deleteStudentBtn.Size = new System.Drawing.Size(129, 33);
-            this.deleteStudentBtn.TabIndex = 2;
-            this.deleteStudentBtn.Text = "Delete Record";
-            this.deleteStudentBtn.UseVisualStyleBackColor = false;
-            // 
-            // topThreeBtn
-            // 
-            this.topThreeBtn.BackColor = System.Drawing.Color.Gray;
-            this.topThreeBtn.Location = new System.Drawing.Point(383, 3);
-            this.topThreeBtn.Name = "topThreeBtn";
-            this.topThreeBtn.Size = new System.Drawing.Size(129, 33);
-            this.topThreeBtn.TabIndex = 3;
-            this.topThreeBtn.Text = "Top 3";
-            this.topThreeBtn.UseVisualStyleBackColor = false;
-            // 
-            // markAttenBtn
-            // 
-            this.markAttenBtn.BackColor = System.Drawing.Color.Gray;
-            this.markAttenBtn.Location = new System.Drawing.Point(507, 3);
-            this.markAttenBtn.Name = "markAttenBtn";
-            this.markAttenBtn.Size = new System.Drawing.Size(129, 33);
-            this.markAttenBtn.TabIndex = 4;
-            this.markAttenBtn.Text = "Attendance Mark";
-            this.markAttenBtn.UseVisualStyleBackColor = false;
-            // 
-            // viewAttenBtn
-            // 
-            this.viewAttenBtn.BackColor = System.Drawing.Color.Gray;
-            this.viewAttenBtn.Location = new System.Drawing.Point(637, 3);
-            this.viewAttenBtn.Name = "viewAttenBtn";
-            this.viewAttenBtn.Size = new System.Drawing.Size(129, 33);
-            this.viewAttenBtn.TabIndex = 5;
-            this.viewAttenBtn.Text = "View Attendance";
-            this.viewAttenBtn.UseVisualStyleBackColor = false;
+            this.label2.Size = new System.Drawing.Size(99, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Enter ID to search: ";
             // 
             // idText
             // 
@@ -225,7 +155,7 @@
             this.uniText.Location = new System.Drawing.Point(160, 118);
             this.uniText.Name = "uniText";
             this.uniText.Size = new System.Drawing.Size(147, 20);
-            this.uniText.TabIndex = 7;
+            this.uniText.TabIndex = 5;
             this.uniText.TextChanged += new System.EventHandler(this.UniText_TextChanged);
             // 
             // departmentText
@@ -233,7 +163,7 @@
             this.departmentText.Location = new System.Drawing.Point(160, 92);
             this.departmentText.Name = "departmentText";
             this.departmentText.Size = new System.Drawing.Size(147, 20);
-            this.departmentText.TabIndex = 8;
+            this.departmentText.TabIndex = 4;
             this.departmentText.TextChanged += new System.EventHandler(this.DepartmentText_TextChanged);
             // 
             // gpaText
@@ -241,7 +171,7 @@
             this.gpaText.Location = new System.Drawing.Point(160, 66);
             this.gpaText.Name = "gpaText";
             this.gpaText.Size = new System.Drawing.Size(147, 20);
-            this.gpaText.TabIndex = 9;
+            this.gpaText.TabIndex = 3;
             this.gpaText.TextChanged += new System.EventHandler(this.GpaText_TextChanged);
             // 
             // nameText
@@ -249,7 +179,7 @@
             this.nameText.Location = new System.Drawing.Point(160, 40);
             this.nameText.Name = "nameText";
             this.nameText.Size = new System.Drawing.Size(147, 20);
-            this.nameText.TabIndex = 10;
+            this.nameText.TabIndex = 2;
             this.nameText.TextChanged += new System.EventHandler(this.NameText_TextChanged);
             // 
             // enterRecord
@@ -257,10 +187,96 @@
             this.enterRecord.Location = new System.Drawing.Point(132, 155);
             this.enterRecord.Name = "enterRecord";
             this.enterRecord.Size = new System.Drawing.Size(96, 23);
-            this.enterRecord.TabIndex = 11;
+            this.enterRecord.TabIndex = 6;
             this.enterRecord.Text = "Enter Student";
             this.enterRecord.UseVisualStyleBackColor = true;
             this.enterRecord.Click += new System.EventHandler(this.EnterRecord_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createProfileToolStripMenuItem,
+            this.searchStudentToolStripMenuItem,
+            this.top3StudentsToolStripMenuItem,
+            this.markAttendanceToolStripMenuItem,
+            this.viewAttendanceToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(857, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // createProfileToolStripMenuItem
+            // 
+            this.createProfileToolStripMenuItem.Name = "createProfileToolStripMenuItem";
+            this.createProfileToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.createProfileToolStripMenuItem.Text = "Create Profile";
+            this.createProfileToolStripMenuItem.Click += new System.EventHandler(this.CreateProfileToolStripMenuItem_Click);
+            // 
+            // searchStudentToolStripMenuItem
+            // 
+            this.searchStudentToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.searchByIDToolStripMenuItem,
+            this.searchByNameToolStripMenuItem,
+            this.listOfAllStudentsToolStripMenuItem});
+            this.searchStudentToolStripMenuItem.Name = "searchStudentToolStripMenuItem";
+            this.searchStudentToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.searchStudentToolStripMenuItem.Text = "Search Student";
+            // 
+            // searchByIDToolStripMenuItem
+            // 
+            this.searchByIDToolStripMenuItem.Name = "searchByIDToolStripMenuItem";
+            this.searchByIDToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.searchByIDToolStripMenuItem.Text = "Search by ID";
+            this.searchByIDToolStripMenuItem.Click += new System.EventHandler(this.SearchByIDToolStripMenuItem_Click);
+            // 
+            // searchByNameToolStripMenuItem
+            // 
+            this.searchByNameToolStripMenuItem.Name = "searchByNameToolStripMenuItem";
+            this.searchByNameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.searchByNameToolStripMenuItem.Text = "Search By Name";
+            // 
+            // listOfAllStudentsToolStripMenuItem
+            // 
+            this.listOfAllStudentsToolStripMenuItem.Name = "listOfAllStudentsToolStripMenuItem";
+            this.listOfAllStudentsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listOfAllStudentsToolStripMenuItem.Text = "List of All Students";
+            // 
+            // top3StudentsToolStripMenuItem
+            // 
+            this.top3StudentsToolStripMenuItem.Name = "top3StudentsToolStripMenuItem";
+            this.top3StudentsToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.top3StudentsToolStripMenuItem.Text = "Top 3 Students";
+            // 
+            // markAttendanceToolStripMenuItem
+            // 
+            this.markAttendanceToolStripMenuItem.Name = "markAttendanceToolStripMenuItem";
+            this.markAttendanceToolStripMenuItem.Size = new System.Drawing.Size(110, 20);
+            this.markAttendanceToolStripMenuItem.Text = "Mark Attendance";
+            // 
+            // viewAttendanceToolStripMenuItem
+            // 
+            this.viewAttendanceToolStripMenuItem.Name = "viewAttendanceToolStripMenuItem";
+            this.viewAttendanceToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
+            this.viewAttendanceToolStripMenuItem.Text = "View Attendance";
+            // 
+            // searchIdText
+            // 
+            this.searchIdText.Location = new System.Drawing.Point(117, 27);
+            this.searchIdText.Name = "searchIdText";
+            this.searchIdText.Size = new System.Drawing.Size(147, 20);
+            this.searchIdText.TabIndex = 1;
+            this.searchIdText.TextChanged += new System.EventHandler(this.SearchIdText_TextChanged);
+            // 
+            // searchIdBtn
+            // 
+            this.searchIdBtn.Location = new System.Drawing.Point(117, 69);
+            this.searchIdBtn.Name = "searchIdBtn";
+            this.searchIdBtn.Size = new System.Drawing.Size(75, 23);
+            this.searchIdBtn.TabIndex = 2;
+            this.searchIdBtn.Text = "Search";
+            this.searchIdBtn.UseVisualStyleBackColor = true;
+            this.searchIdBtn.Click += new System.EventHandler(this.SearchIdBtn_Click);
             // 
             // Form1
             // 
@@ -268,33 +284,28 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(857, 450);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.profilePanel);
             this.Controls.Add(this.searchPanel);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.searchPanel.ResumeLayout(false);
             this.searchPanel.PerformLayout();
             this.profilePanel.ResumeLayout(false);
             this.profilePanel.PerformLayout();
-            this.panel3.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button studentProfileBtn;
-        private System.Windows.Forms.Button searchStudentBtn;
         private System.Windows.Forms.Panel searchPanel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel profilePanel;
         private System.Windows.Forms.Label idLabel;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button topThreeBtn;
-        private System.Windows.Forms.Button deleteStudentBtn;
-        private System.Windows.Forms.Button viewAttenBtn;
-        private System.Windows.Forms.Button markAttenBtn;
         private System.Windows.Forms.TextBox idText;
         private System.Windows.Forms.TextBox nameText;
         private System.Windows.Forms.TextBox gpaText;
@@ -305,6 +316,17 @@
         private System.Windows.Forms.Label gpaLabel;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Button enterRecord;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem createProfileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchStudentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchByIDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchByNameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listOfAllStudentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem top3StudentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem markAttendanceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewAttendanceToolStripMenuItem;
+        private System.Windows.Forms.TextBox searchIdText;
+        private System.Windows.Forms.Button searchIdBtn;
     }
 }
 

@@ -14,22 +14,25 @@ namespace StudentPortal
     public partial class Form1 : Form
     {
         Student student = new Student();
+        String searchById;
         public Form1()
         {
             InitializeComponent();
-            
         }
-
-        private void Button1_Click(object sender, EventArgs e)
+        private void getListFile(ref List<Student> list)
         {
-            searchPanel.Visible = true;
-            profilePanel.Visible = false;
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            profilePanel.Visible = true;
-            searchPanel.Visible = false;
+            StreamReader streamReader = new StreamReader(@"E:\\BSE 5A\\VP\\VP assign 1\\VP Asssignment FormBasedStudentPortal\\StudentPortal\\data.txt");
+            while (streamReader.EndOfStream != true)
+            {
+                Student s = new Student();
+                s.id = streamReader.ReadLine();
+                s.name = streamReader.ReadLine();
+                s.gpa = Convert.ToDouble(streamReader.ReadLine());
+                s.department = streamReader.ReadLine();
+                s.university = streamReader.ReadLine();
+                s.attendance = Convert.ToBoolean(streamReader.ReadLine());
+                list.Add(s);
+            }
         }
 
         private void IdText_TextChanged(object sender, EventArgs e)
@@ -69,6 +72,40 @@ namespace StudentPortal
             streamWriter.WriteLine(student.attendance);
             streamWriter.Close();
             MessageBox.Show("Data is written in File    "+ student.name);
+        }
+
+        private void CreateProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            searchPanel.Visible = false;
+            profilePanel.Visible = true;
+        }
+
+        private void SearchByIDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            profilePanel.Visible = false;
+            searchPanel.Visible = true;
+        }
+
+        private void SearchIdText_TextChanged(object sender, EventArgs e)
+        {
+            searchById = searchIdText.Text;
+           
+        }
+
+        private void SearchIdBtn_Click(object sender, EventArgs e)
+        {
+            //design function
+            List<Student> listForId = new List<Student>();
+            getListFile(ref listForId);
+
+            for (int i = 0; i < listForId.Count; i++)
+            {
+                if (listForId[i].id == searchById)
+                {
+                    MessageBox.Show("Name: " + listForId[i].name);
+                    // learn grid and display data
+                }
+            }
         }
     }
 }
