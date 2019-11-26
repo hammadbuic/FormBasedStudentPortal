@@ -1,0 +1,12 @@
+40
+hammad irshad
+3
+software
+islamic
+False
+21
+salman
+3.2
+it
+bahria
+False

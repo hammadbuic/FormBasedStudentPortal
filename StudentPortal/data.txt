@@ -1,0 +1,6 @@
+90
+salman
+3.2
+it
+bahria
+False
