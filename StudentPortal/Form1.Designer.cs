@@ -28,9 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.searchPanel = new System.Windows.Forms.Panel();
             this.idSearchGrid = new System.Windows.Forms.DataGridView();
+            this.idCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gpaCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uniCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchIdBtn = new System.Windows.Forms.Button();
             this.searchIdText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,42 +59,41 @@
             this.top3StudentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markAttendanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewAttendanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nameSearchPanel = new System.Windows.Forms.Panel();
             this.searchNameGrid = new System.Windows.Forms.DataGridView();
-            this.seachNameBtn = new System.Windows.Forms.Button();
-            this.searchNameText = new System.Windows.Forms.TextBox();
-            this.nameSeachLabel = new System.Windows.Forms.Label();
-            this.allStudentPanel = new System.Windows.Forms.Panel();
-            this.allStudentGrid = new System.Windows.Forms.DataGridView();
-            this.allStudentLabel = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gpaCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.departCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uniCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.seachNameBtn = new System.Windows.Forms.Button();
+            this.searchNameText = new System.Windows.Forms.TextBox();
+            this.nameSeachLabel = new System.Windows.Forms.Label();
+            this.allStudentPanel = new System.Windows.Forms.Panel();
+            this.allStudentGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.allStudentLabel = new System.Windows.Forms.Label();
             this.topThreePanel = new System.Windows.Forms.Panel();
-            this.topThreeLabel = new System.Windows.Forms.Label();
             this.topThreeGrid = new System.Windows.Forms.DataGridView();
+            this.topThreeLabel = new System.Windows.Forms.Label();
             this.markAttenPanel = new System.Windows.Forms.Panel();
-            this.markAttenGrid = new System.Windows.Forms.DataGridView();
-            this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.markAttenLabel = new System.Windows.Forms.Label();
+            this.markAttenGrid = new System.Windows.Forms.DataGridView();
             this.viewAttenPanel = new System.Windows.Forms.Panel();
-            this.viewAttenLabel = new System.Windows.Forms.Label();
             this.viewAttenGrid = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Attendance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.viewAttenLabel = new System.Windows.Forms.Label();
+            this.deleteStuPanel = new System.Windows.Forms.Panel();
+            this.deleteStuBtn = new System.Windows.Forms.Button();
+            this.deleteStuText = new System.Windows.Forms.TextBox();
+            this.DeleteStuLabel = new System.Windows.Forms.Label();
             this.searchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.idSearchGrid)).BeginInit();
             this.profilePanel.SuspendLayout();
@@ -103,9 +106,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.topThreeGrid)).BeginInit();
             this.markAttenPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.markAttenGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
             this.viewAttenPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewAttenGrid)).BeginInit();
+            this.deleteStuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // searchPanel
@@ -133,6 +136,31 @@
             this.idSearchGrid.Name = "idSearchGrid";
             this.idSearchGrid.Size = new System.Drawing.Size(448, 150);
             this.idSearchGrid.TabIndex = 3;
+            // 
+            // idCol
+            // 
+            this.idCol.HeaderText = "ID";
+            this.idCol.Name = "idCol";
+            // 
+            // nameCol
+            // 
+            this.nameCol.HeaderText = "Name";
+            this.nameCol.Name = "nameCol";
+            // 
+            // gpaCol
+            // 
+            this.gpaCol.HeaderText = "CGPA";
+            this.gpaCol.Name = "gpaCol";
+            // 
+            // departCol
+            // 
+            this.departCol.HeaderText = "Department";
+            this.departCol.Name = "departCol";
+            // 
+            // uniCol
+            // 
+            this.uniCol.HeaderText = "University";
+            this.uniCol.Name = "uniCol";
             // 
             // searchIdBtn
             // 
@@ -281,7 +309,8 @@
             this.searchStudentToolStripMenuItem,
             this.top3StudentsToolStripMenuItem,
             this.markAttendanceToolStripMenuItem,
-            this.viewAttendanceToolStripMenuItem});
+            this.viewAttendanceToolStripMenuItem,
+            this.deleteRecordToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(960, 24);
@@ -347,6 +376,13 @@
             this.viewAttendanceToolStripMenuItem.Text = "View Attendance";
             this.viewAttendanceToolStripMenuItem.Click += new System.EventHandler(this.ViewAttendanceToolStripMenuItem_Click);
             // 
+            // deleteRecordToolStripMenuItem
+            // 
+            this.deleteRecordToolStripMenuItem.Name = "deleteRecordToolStripMenuItem";
+            this.deleteRecordToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
+            this.deleteRecordToolStripMenuItem.Text = "Delete Record";
+            this.deleteRecordToolStripMenuItem.Click += new System.EventHandler(this.DeleteRecordToolStripMenuItem_Click);
+            // 
             // nameSearchPanel
             // 
             this.nameSearchPanel.Controls.Add(this.searchNameGrid);
@@ -373,6 +409,31 @@
             this.searchNameGrid.Name = "searchNameGrid";
             this.searchNameGrid.Size = new System.Drawing.Size(448, 150);
             this.searchNameGrid.TabIndex = 4;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "CGPA";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Department";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "University";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
             // seachNameBtn
             // 
@@ -425,15 +486,6 @@
             this.allStudentGrid.Size = new System.Drawing.Size(448, 150);
             this.allStudentGrid.TabIndex = 5;
             // 
-            // allStudentLabel
-            // 
-            this.allStudentLabel.AutoSize = true;
-            this.allStudentLabel.Location = new System.Drawing.Point(88, 31);
-            this.allStudentLabel.Name = "allStudentLabel";
-            this.allStudentLabel.Size = new System.Drawing.Size(94, 13);
-            this.allStudentLabel.TabIndex = 0;
-            this.allStudentLabel.Text = "List of All Students";
-            // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.HeaderText = "ID";
@@ -459,55 +511,14 @@
             this.dataGridViewTextBoxColumn11.HeaderText = "University";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             // 
-            // dataGridViewTextBoxColumn1
+            // allStudentLabel
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "CGPA";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Department";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "University";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // idCol
-            // 
-            this.idCol.HeaderText = "ID";
-            this.idCol.Name = "idCol";
-            // 
-            // nameCol
-            // 
-            this.nameCol.HeaderText = "Name";
-            this.nameCol.Name = "nameCol";
-            // 
-            // gpaCol
-            // 
-            this.gpaCol.HeaderText = "CGPA";
-            this.gpaCol.Name = "gpaCol";
-            // 
-            // departCol
-            // 
-            this.departCol.HeaderText = "Department";
-            this.departCol.Name = "departCol";
-            // 
-            // uniCol
-            // 
-            this.uniCol.HeaderText = "University";
-            this.uniCol.Name = "uniCol";
+            this.allStudentLabel.AutoSize = true;
+            this.allStudentLabel.Location = new System.Drawing.Point(88, 31);
+            this.allStudentLabel.Name = "allStudentLabel";
+            this.allStudentLabel.Size = new System.Drawing.Size(94, 13);
+            this.allStudentLabel.TabIndex = 0;
+            this.allStudentLabel.Text = "List of All Students";
             // 
             // topThreePanel
             // 
@@ -519,6 +530,14 @@
             this.topThreePanel.TabIndex = 8;
             this.topThreePanel.Visible = false;
             // 
+            // topThreeGrid
+            // 
+            this.topThreeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.topThreeGrid.Location = new System.Drawing.Point(10, 72);
+            this.topThreeGrid.Name = "topThreeGrid";
+            this.topThreeGrid.Size = new System.Drawing.Size(442, 125);
+            this.topThreeGrid.TabIndex = 1;
+            // 
             // topThreeLabel
             // 
             this.topThreeLabel.AutoSize = true;
@@ -527,14 +546,6 @@
             this.topThreeLabel.Size = new System.Drawing.Size(102, 13);
             this.topThreeLabel.TabIndex = 0;
             this.topThreeLabel.Text = "Top Three Students";
-            // 
-            // topThreeGrid
-            // 
-            this.topThreeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.topThreeGrid.Location = new System.Drawing.Point(10, 72);
-            this.topThreeGrid.Name = "topThreeGrid";
-            this.topThreeGrid.Size = new System.Drawing.Size(442, 125);
-            this.topThreeGrid.TabIndex = 1;
             // 
             // markAttenPanel
             // 
@@ -546,19 +557,6 @@
             this.markAttenPanel.TabIndex = 9;
             this.markAttenPanel.Visible = false;
             // 
-            // markAttenGrid
-            // 
-            this.markAttenGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.markAttenGrid.Location = new System.Drawing.Point(3, 111);
-            this.markAttenGrid.Name = "markAttenGrid";
-            this.markAttenGrid.Size = new System.Drawing.Size(435, 150);
-            this.markAttenGrid.TabIndex = 0;
-            this.markAttenGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MarkAttenGrid_CellClick);
-            // 
-            // form1BindingSource
-            // 
-            this.form1BindingSource.DataSource = typeof(StudentPortal.Form1);
-            // 
             // markAttenLabel
             // 
             this.markAttenLabel.AutoSize = true;
@@ -568,24 +566,24 @@
             this.markAttenLabel.TabIndex = 1;
             this.markAttenLabel.Text = "Mark Attendance Of Students";
             // 
+            // markAttenGrid
+            // 
+            this.markAttenGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.markAttenGrid.Location = new System.Drawing.Point(3, 111);
+            this.markAttenGrid.Name = "markAttenGrid";
+            this.markAttenGrid.Size = new System.Drawing.Size(435, 150);
+            this.markAttenGrid.TabIndex = 0;
+            this.markAttenGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MarkAttenGrid_CellClick);
+            // 
             // viewAttenPanel
             // 
             this.viewAttenPanel.Controls.Add(this.viewAttenGrid);
             this.viewAttenPanel.Controls.Add(this.viewAttenLabel);
-            this.viewAttenPanel.Location = new System.Drawing.Point(505, 94);
+            this.viewAttenPanel.Location = new System.Drawing.Point(35, 91);
             this.viewAttenPanel.Name = "viewAttenPanel";
             this.viewAttenPanel.Size = new System.Drawing.Size(427, 344);
             this.viewAttenPanel.TabIndex = 10;
             this.viewAttenPanel.Visible = false;
-            // 
-            // viewAttenLabel
-            // 
-            this.viewAttenLabel.AutoSize = true;
-            this.viewAttenLabel.Location = new System.Drawing.Point(56, 45);
-            this.viewAttenLabel.Name = "viewAttenLabel";
-            this.viewAttenLabel.Size = new System.Drawing.Size(88, 13);
-            this.viewAttenLabel.TabIndex = 0;
-            this.viewAttenLabel.Text = "View Attendance";
             // 
             // viewAttenGrid
             // 
@@ -615,12 +613,60 @@
             this.Attendance.Name = "Attendance";
             this.Attendance.ReadOnly = true;
             // 
+            // viewAttenLabel
+            // 
+            this.viewAttenLabel.AutoSize = true;
+            this.viewAttenLabel.Location = new System.Drawing.Point(56, 45);
+            this.viewAttenLabel.Name = "viewAttenLabel";
+            this.viewAttenLabel.Size = new System.Drawing.Size(88, 13);
+            this.viewAttenLabel.TabIndex = 0;
+            this.viewAttenLabel.Text = "View Attendance";
+            // 
+            // deleteStuPanel
+            // 
+            this.deleteStuPanel.Controls.Add(this.deleteStuBtn);
+            this.deleteStuPanel.Controls.Add(this.deleteStuText);
+            this.deleteStuPanel.Controls.Add(this.DeleteStuLabel);
+            this.deleteStuPanel.Location = new System.Drawing.Point(493, 82);
+            this.deleteStuPanel.Name = "deleteStuPanel";
+            this.deleteStuPanel.Size = new System.Drawing.Size(404, 340);
+            this.deleteStuPanel.TabIndex = 11;
+            this.deleteStuPanel.Visible = false;
+            // 
+            // deleteStuBtn
+            // 
+            this.deleteStuBtn.Location = new System.Drawing.Point(124, 116);
+            this.deleteStuBtn.Name = "deleteStuBtn";
+            this.deleteStuBtn.Size = new System.Drawing.Size(104, 23);
+            this.deleteStuBtn.TabIndex = 2;
+            this.deleteStuBtn.Text = "deleteRecord";
+            this.deleteStuBtn.UseVisualStyleBackColor = true;
+            this.deleteStuBtn.Click += new System.EventHandler(this.DeleteStuBtn_Click);
+            // 
+            // deleteStuText
+            // 
+            this.deleteStuText.Location = new System.Drawing.Point(178, 78);
+            this.deleteStuText.Name = "deleteStuText";
+            this.deleteStuText.Size = new System.Drawing.Size(147, 20);
+            this.deleteStuText.TabIndex = 1;
+            this.deleteStuText.TextChanged += new System.EventHandler(this.DeleteStuText_TextChanged);
+            // 
+            // DeleteStuLabel
+            // 
+            this.DeleteStuLabel.AutoSize = true;
+            this.DeleteStuLabel.Location = new System.Drawing.Point(20, 81);
+            this.DeleteStuLabel.Name = "DeleteStuLabel";
+            this.DeleteStuLabel.Size = new System.Drawing.Size(152, 13);
+            this.DeleteStuLabel.TabIndex = 0;
+            this.DeleteStuLabel.Text = "Enter ID Of Student to Delete: ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(960, 450);
+            this.Controls.Add(this.deleteStuPanel);
             this.Controls.Add(this.viewAttenPanel);
             this.Controls.Add(this.markAttenPanel);
             this.Controls.Add(this.topThreePanel);
@@ -630,7 +676,7 @@
             this.Controls.Add(this.profilePanel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            //this.Name = "Form1";
+            
             this.Text = "Form1";
             this.searchPanel.ResumeLayout(false);
             this.searchPanel.PerformLayout();
@@ -651,10 +697,11 @@
             this.markAttenPanel.ResumeLayout(false);
             this.markAttenPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.markAttenGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).EndInit();
             this.viewAttenPanel.ResumeLayout(false);
             this.viewAttenPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewAttenGrid)).EndInit();
+            this.deleteStuPanel.ResumeLayout(false);
+            this.deleteStuPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -695,7 +742,6 @@
         private System.Windows.Forms.Panel allStudentPanel;
         private System.Windows.Forms.DataGridView allStudentGrid;
         private System.Windows.Forms.Label allStudentLabel;
-        private System.Windows.Forms.BindingSource form1BindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn gpaCol;
@@ -723,6 +769,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Attendance;
         private System.Windows.Forms.Label viewAttenLabel;
+        private System.Windows.Forms.ToolStripMenuItem deleteRecordToolStripMenuItem;
+        private System.Windows.Forms.Panel deleteStuPanel;
+        private System.Windows.Forms.Button deleteStuBtn;
+        private System.Windows.Forms.TextBox deleteStuText;
+        private System.Windows.Forms.Label DeleteStuLabel;
     }
 }
 

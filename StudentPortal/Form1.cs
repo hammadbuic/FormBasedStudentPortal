@@ -14,7 +14,7 @@ namespace StudentPortal
     public partial class Form1 : Form
     {
         Student student = new Student();
-        String searchById,searchByName;
+        String searchById, searchByName, deleteId;
         public Form1()
         {
             InitializeComponent();
@@ -107,6 +107,7 @@ namespace StudentPortal
         {
             searchPanel.Visible = false;
             nameSearchPanel.Visible = false;
+            deleteStuPanel.Visible = false;
             allStudentPanel.Visible = false;
             topThreePanel.Visible = false;
             markAttenPanel.Visible = false;
@@ -118,6 +119,7 @@ namespace StudentPortal
         {
             profilePanel.Visible = false;
             nameSearchPanel.Visible = false;
+            deleteStuPanel.Visible = false;
             markAttenPanel.Visible = false;
             allStudentPanel.Visible = false;
             topThreePanel.Visible = false;
@@ -187,6 +189,7 @@ namespace StudentPortal
             searchPanel.Visible = false;
             markAttenPanel.Visible = false;
             allStudentPanel.Visible = false;
+            deleteStuPanel.Visible = false;
             topThreePanel.Visible = false;
             nameSearchPanel.Visible = true;
             searchNameGrid.Rows.Clear();
@@ -197,6 +200,7 @@ namespace StudentPortal
             viewAttenPanel.Visible = false;
             profilePanel.Visible = false;
             searchPanel.Visible = false;
+            deleteStuPanel.Visible = false;
             markAttenPanel.Visible = false;
             nameSearchPanel.Visible = false;
             topThreePanel.Visible = false;
@@ -225,6 +229,7 @@ namespace StudentPortal
             //topThreeGrid.Rows.Clear();
             profilePanel.Visible = false;
             viewAttenPanel.Visible = false;
+            deleteStuPanel.Visible = false;
             searchPanel.Visible = false;
             markAttenPanel.Visible = false;
             nameSearchPanel.Visible = false;
@@ -243,6 +248,7 @@ namespace StudentPortal
         {
             viewAttenPanel.Visible = false;
             markAttenPanel.Visible = true;
+            deleteStuPanel.Visible = false;
             profilePanel.Visible = false;
             searchPanel.Visible = false;
             nameSearchPanel.Visible = false;
@@ -292,6 +298,7 @@ namespace StudentPortal
             nameSearchPanel.Visible = false;
             allStudentPanel.Visible = false;
             topThreePanel.Visible = false;
+            deleteStuPanel.Visible = false;
             List<Student> listView = new List<Student>();
             getListFile(ref listView);
             for (int i = 0; i < listView.Count; i++)
@@ -308,6 +315,51 @@ namespace StudentPortal
                     viewAttenGrid.Rows[n].Cells[2].Value = "Absent";
                 }
             }
+        }
+
+        private void DeleteStuText_TextChanged(object sender, EventArgs e)
+        {
+            deleteId = deleteStuText.Text;
+        }
+
+        private void DeleteStuBtn_Click(object sender, EventArgs e)
+        {
+            List<Student> listDelete = new List<Student>();
+            getListFile(ref listDelete);
+            for (int i = 0; i < listDelete.Count; i++)
+            {
+                if (listDelete[i].id == deleteId)
+                {
+                    listDelete.RemoveAt(i);
+                }
+            }
+            StreamWriter stream = new StreamWriter(@"E:\\BSE 5A\\VP\\VP assign 1\\VP Asssignment FormBasedStudentPortal\\StudentPortal\\data.txt");
+            stream.Write("");
+            stream.Close();
+            stream = File.AppendText(@"E:\\BSE 5A\\VP\\VP assign 1\\VP Asssignment FormBasedStudentPortal\\StudentPortal\\data.txt");
+            for (int i = 0; i < listDelete.Count; i++)
+            {
+                stream.WriteLine(listDelete[i].id);
+                stream.WriteLine(listDelete[i].name);
+                stream.WriteLine(listDelete[i].gpa);
+                stream.WriteLine(listDelete[i].department);
+                stream.WriteLine(listDelete[i].university);
+                stream.WriteLine(listDelete[i].attendance);
+            }
+            stream.Close();
+            MessageBox.Show("Record is Deleted Successfully");
+        }
+
+        private void DeleteRecordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            deleteStuPanel.Visible = true;
+            viewAttenPanel.Visible = false;
+            markAttenPanel.Visible = false;
+            profilePanel.Visible = false;
+            searchPanel.Visible = false;
+            nameSearchPanel.Visible = false;
+            allStudentPanel.Visible = false;
+            topThreePanel.Visible = false;
         }
 
         private void SeachNameText_TextChanged(object sender, EventArgs e)
