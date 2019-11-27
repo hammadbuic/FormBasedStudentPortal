@@ -109,6 +109,8 @@ namespace StudentPortal
             nameSearchPanel.Visible = false;
             allStudentPanel.Visible = false;
             topThreePanel.Visible = false;
+            markAttenPanel.Visible = false;
+            viewAttenPanel.Visible = false;
             profilePanel.Visible = true;
         }
 
@@ -116,9 +118,11 @@ namespace StudentPortal
         {
             profilePanel.Visible = false;
             nameSearchPanel.Visible = false;
+            markAttenPanel.Visible = false;
             allStudentPanel.Visible = false;
             topThreePanel.Visible = false;
             searchPanel.Visible = true;
+            viewAttenPanel.Visible = false;
             idSearchGrid.Rows.Clear();
         }
 
@@ -178,8 +182,10 @@ namespace StudentPortal
 
         private void SearchByNameToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            viewAttenPanel.Visible = false;
             profilePanel.Visible = false;
             searchPanel.Visible = false;
+            markAttenPanel.Visible = false;
             allStudentPanel.Visible = false;
             topThreePanel.Visible = false;
             nameSearchPanel.Visible = true;
@@ -188,8 +194,10 @@ namespace StudentPortal
 
         private void ListOfAllStudentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            viewAttenPanel.Visible = false;
             profilePanel.Visible = false;
             searchPanel.Visible = false;
+            markAttenPanel.Visible = false;
             nameSearchPanel.Visible = false;
             topThreePanel.Visible = false;
             allStudentPanel.Visible = true;
@@ -216,7 +224,9 @@ namespace StudentPortal
         {
             //topThreeGrid.Rows.Clear();
             profilePanel.Visible = false;
+            viewAttenPanel.Visible = false;
             searchPanel.Visible = false;
+            markAttenPanel.Visible = false;
             nameSearchPanel.Visible = false;
             allStudentPanel.Visible = false;
             topThreePanel.Visible = true;
@@ -227,6 +237,77 @@ namespace StudentPortal
             int thirdLargest = -1;
             List<Student> topThreeList=getTopThreeStudents(ref firstLargest, ref secondLargest, ref thirdLargest, listForTop);
             topThreeGrid.DataSource = topThreeList;
+        }
+
+        private void MarkAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewAttenPanel.Visible = false;
+            markAttenPanel.Visible = true;
+            profilePanel.Visible = false;
+            searchPanel.Visible = false;
+            nameSearchPanel.Visible = false;
+            allStudentPanel.Visible = false;
+            topThreePanel.Visible = false;
+            List<Student> listAttenMark = new List<Student>();
+            getListFile(ref listAttenMark);
+            markAttenGrid.DataSource = listAttenMark;
+        }
+
+        private void MarkAttenGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int indexAtten = e.RowIndex;
+            MessageBox.Show("Clicked Index is: " + indexAtten);
+            List<Student> listAttenMark = new List<Student>();
+            getListFile(ref listAttenMark);
+            if(listAttenMark[indexAtten].attendance==true)
+            {
+                listAttenMark[indexAtten].attendance = false;
+            }
+            else if(listAttenMark[indexAtten].attendance==false)
+            {
+                listAttenMark[indexAtten].attendance = true;
+            }
+            StreamWriter writer = new StreamWriter(@"E:\\BSE 5A\\VP\\VP assign 1\\VP Asssignment FormBasedStudentPortal\\StudentPortal\\data.txt");
+            writer.Write("");
+            writer.Close();
+            writer = File.AppendText(@"E:\\BSE 5A\\VP\\VP assign 1\\VP Asssignment FormBasedStudentPortal\\StudentPortal\\data.txt");
+            for (int i = 0;  i < listAttenMark.Count;i++)
+            {
+                writer.WriteLine(listAttenMark[i].id);
+                writer.WriteLine(listAttenMark[i].name);
+                writer.WriteLine(listAttenMark[i].gpa);
+                writer.WriteLine(listAttenMark[i].department);
+                writer.WriteLine(listAttenMark[i].university);
+                writer.WriteLine(listAttenMark[i].attendance);
+            }
+            writer.Close();
+        }
+
+        private void ViewAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewAttenPanel.Visible = true;
+            markAttenPanel.Visible = false;
+            profilePanel.Visible = false;
+            searchPanel.Visible = false;
+            nameSearchPanel.Visible = false;
+            allStudentPanel.Visible = false;
+            topThreePanel.Visible = false;
+            List<Student> listView = new List<Student>();
+            getListFile(ref listView);
+            for (int i = 0; i < listView.Count; i++)
+            {
+                int n = viewAttenGrid.Rows.Add();
+                viewAttenGrid.Rows[n].Cells[0].Value = listView[i].id;
+                viewAttenGrid.Rows[n].Cells[1].Value = listView[i].name;
+                if(listView[i].attendance==true)
+                {
+                    viewAttenGrid.Rows[n].Cells[2].Value = "Present";
+                }
+                else if(listView[i].attendance==false)
+                {
+                    viewAttenGrid.Rows[n].Cells[2].Value = "Absent";
+                }
+            }
         }
 
         private void SeachNameText_TextChanged(object sender, EventArgs e)

@@ -78,10 +78,19 @@
             this.gpaCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.departCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uniCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.topThreePanel = new System.Windows.Forms.Panel();
             this.topThreeLabel = new System.Windows.Forms.Label();
             this.topThreeGrid = new System.Windows.Forms.DataGridView();
+            this.markAttenPanel = new System.Windows.Forms.Panel();
+            this.markAttenGrid = new System.Windows.Forms.DataGridView();
+            this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.markAttenLabel = new System.Windows.Forms.Label();
+            this.viewAttenPanel = new System.Windows.Forms.Panel();
+            this.viewAttenLabel = new System.Windows.Forms.Label();
+            this.viewAttenGrid = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Attendance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.idSearchGrid)).BeginInit();
             this.profilePanel.SuspendLayout();
@@ -90,9 +99,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchNameGrid)).BeginInit();
             this.allStudentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.allStudentGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
             this.topThreePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.topThreeGrid)).BeginInit();
+            this.markAttenPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.markAttenGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
+            this.viewAttenPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.viewAttenGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // searchPanel
@@ -325,12 +338,14 @@
             this.markAttendanceToolStripMenuItem.Name = "markAttendanceToolStripMenuItem";
             this.markAttendanceToolStripMenuItem.Size = new System.Drawing.Size(110, 20);
             this.markAttendanceToolStripMenuItem.Text = "Mark Attendance";
+            this.markAttendanceToolStripMenuItem.Click += new System.EventHandler(this.MarkAttendanceToolStripMenuItem_Click);
             // 
             // viewAttendanceToolStripMenuItem
             // 
             this.viewAttendanceToolStripMenuItem.Name = "viewAttendanceToolStripMenuItem";
             this.viewAttendanceToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
             this.viewAttendanceToolStripMenuItem.Text = "View Attendance";
+            this.viewAttendanceToolStripMenuItem.Click += new System.EventHandler(this.ViewAttendanceToolStripMenuItem_Click);
             // 
             // nameSearchPanel
             // 
@@ -494,15 +509,11 @@
             this.uniCol.HeaderText = "University";
             this.uniCol.Name = "uniCol";
             // 
-            // form1BindingSource
-            // 
-            this.form1BindingSource.DataSource = typeof(StudentPortal.Form1);
-            // 
             // topThreePanel
             // 
             this.topThreePanel.Controls.Add(this.topThreeGrid);
             this.topThreePanel.Controls.Add(this.topThreeLabel);
-            this.topThreePanel.Location = new System.Drawing.Point(493, 97);
+            this.topThreePanel.Location = new System.Drawing.Point(12, 94);
             this.topThreePanel.Name = "topThreePanel";
             this.topThreePanel.Size = new System.Drawing.Size(455, 328);
             this.topThreePanel.TabIndex = 8;
@@ -525,12 +536,93 @@
             this.topThreeGrid.Size = new System.Drawing.Size(442, 125);
             this.topThreeGrid.TabIndex = 1;
             // 
+            // markAttenPanel
+            // 
+            this.markAttenPanel.Controls.Add(this.markAttenLabel);
+            this.markAttenPanel.Controls.Add(this.markAttenGrid);
+            this.markAttenPanel.Location = new System.Drawing.Point(24, 91);
+            this.markAttenPanel.Name = "markAttenPanel";
+            this.markAttenPanel.Size = new System.Drawing.Size(441, 344);
+            this.markAttenPanel.TabIndex = 9;
+            this.markAttenPanel.Visible = false;
+            // 
+            // markAttenGrid
+            // 
+            this.markAttenGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.markAttenGrid.Location = new System.Drawing.Point(3, 111);
+            this.markAttenGrid.Name = "markAttenGrid";
+            this.markAttenGrid.Size = new System.Drawing.Size(435, 150);
+            this.markAttenGrid.TabIndex = 0;
+            this.markAttenGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MarkAttenGrid_CellClick);
+            // 
+            // form1BindingSource
+            // 
+            this.form1BindingSource.DataSource = typeof(StudentPortal.Form1);
+            // 
+            // markAttenLabel
+            // 
+            this.markAttenLabel.AutoSize = true;
+            this.markAttenLabel.Location = new System.Drawing.Point(122, 69);
+            this.markAttenLabel.Name = "markAttenLabel";
+            this.markAttenLabel.Size = new System.Drawing.Size(148, 13);
+            this.markAttenLabel.TabIndex = 1;
+            this.markAttenLabel.Text = "Mark Attendance Of Students";
+            // 
+            // viewAttenPanel
+            // 
+            this.viewAttenPanel.Controls.Add(this.viewAttenGrid);
+            this.viewAttenPanel.Controls.Add(this.viewAttenLabel);
+            this.viewAttenPanel.Location = new System.Drawing.Point(505, 94);
+            this.viewAttenPanel.Name = "viewAttenPanel";
+            this.viewAttenPanel.Size = new System.Drawing.Size(427, 344);
+            this.viewAttenPanel.TabIndex = 10;
+            this.viewAttenPanel.Visible = false;
+            // 
+            // viewAttenLabel
+            // 
+            this.viewAttenLabel.AutoSize = true;
+            this.viewAttenLabel.Location = new System.Drawing.Point(56, 45);
+            this.viewAttenLabel.Name = "viewAttenLabel";
+            this.viewAttenLabel.Size = new System.Drawing.Size(88, 13);
+            this.viewAttenLabel.TabIndex = 0;
+            this.viewAttenLabel.Text = "View Attendance";
+            // 
+            // viewAttenGrid
+            // 
+            this.viewAttenGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.viewAttenGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.Name,
+            this.Attendance});
+            this.viewAttenGrid.Location = new System.Drawing.Point(3, 95);
+            this.viewAttenGrid.Name = "viewAttenGrid";
+            this.viewAttenGrid.Size = new System.Drawing.Size(421, 150);
+            this.viewAttenGrid.TabIndex = 1;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "Student ID";
+            this.id.Name = "id";
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Student Name";
+            this.Name.Name = "Name";
+            // 
+            // Attendance
+            // 
+            this.Attendance.HeaderText = "Attendance";
+            this.Attendance.Name = "Attendance";
+            this.Attendance.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(960, 450);
+            this.Controls.Add(this.viewAttenPanel);
+            this.Controls.Add(this.markAttenPanel);
             this.Controls.Add(this.topThreePanel);
             this.Controls.Add(this.allStudentPanel);
             this.Controls.Add(this.nameSearchPanel);
@@ -538,7 +630,7 @@
             this.Controls.Add(this.profilePanel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            //this.Name = "Form1";
             this.Text = "Form1";
             this.searchPanel.ResumeLayout(false);
             this.searchPanel.PerformLayout();
@@ -553,10 +645,16 @@
             this.allStudentPanel.ResumeLayout(false);
             this.allStudentPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.allStudentGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).EndInit();
             this.topThreePanel.ResumeLayout(false);
             this.topThreePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.topThreeGrid)).EndInit();
+            this.markAttenPanel.ResumeLayout(false);
+            this.markAttenPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.markAttenGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).EndInit();
+            this.viewAttenPanel.ResumeLayout(false);
+            this.viewAttenPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.viewAttenGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -616,6 +714,15 @@
         private System.Windows.Forms.Panel topThreePanel;
         private System.Windows.Forms.DataGridView topThreeGrid;
         private System.Windows.Forms.Label topThreeLabel;
+        private System.Windows.Forms.Panel markAttenPanel;
+        private System.Windows.Forms.DataGridView markAttenGrid;
+        private System.Windows.Forms.Label markAttenLabel;
+        private System.Windows.Forms.Panel viewAttenPanel;
+        private System.Windows.Forms.DataGridView viewAttenGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Attendance;
+        private System.Windows.Forms.Label viewAttenLabel;
     }
 }
 
