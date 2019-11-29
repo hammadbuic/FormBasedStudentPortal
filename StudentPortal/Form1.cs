@@ -21,6 +21,20 @@ namespace StudentPortal
         {
             InitializeComponent();
         }
+        private bool isIdPresent(string str)
+        {
+            bool result=false;
+            List<Student> listIdCheck = new List<Student>();
+            getListFile(ref listIdCheck);
+            for(int i=0;i<listIdCheck.Count;i++)
+            {
+                if(listIdCheck[i].id==str)
+                {
+                    result = true;
+                }
+            }
+            return result;
+        }
         static List<Student> getTopThreeStudents(ref int firstIndex, ref int secondIndex, ref int thirdIndex, List<Student> list)
         {
             List<Student> resultList = new List<Student>();
@@ -74,11 +88,13 @@ namespace StudentPortal
         private void NameText_TextChanged(object sender, EventArgs e)
         {
             student.name = nameText.Text;
+            
         }
 
         private void GpaText_TextChanged(object sender, EventArgs e)
         {
             student.gpa = Convert.ToDouble(gpaText.Text);
+
         }
 
         private void DepartmentText_TextChanged(object sender, EventArgs e)
@@ -93,16 +109,35 @@ namespace StudentPortal
 
         private void EnterRecord_Click(object sender, EventArgs e)
         {
-            student.attendance = false;
-            StreamWriter streamWriter = new StreamWriter(path, append: true);
-            streamWriter.WriteLine(student.id);
-            streamWriter.WriteLine(student.name);
-            streamWriter.WriteLine(student.gpa);
-            streamWriter.WriteLine(student.department);
-            streamWriter.WriteLine(student.university);
-            streamWriter.WriteLine(student.attendance);
-            streamWriter.Close();
-            MessageBox.Show("Data is written in File    "+ student.name);
+            //get list and check id
+
+            if (string.IsNullOrEmpty(student.id) || string.IsNullOrEmpty(student.name) || Double.IsNaN(student.gpa) || string.IsNullOrEmpty(student.department) || string.IsNullOrEmpty(student.university))
+            {
+                //Notify the user
+                MessageBox.Show("You left a field empty");
+            }
+            else if(isIdPresent(student.id))
+            {
+                MessageBox.Show("This ID is already alloted to a Student!\nPlease Change it and try again");
+            }
+            else
+            {
+                student.attendance = false;
+                StreamWriter streamWriter = new StreamWriter(path, append: true);
+                streamWriter.WriteLine(student.id);
+                streamWriter.WriteLine(student.name);
+                streamWriter.WriteLine(student.gpa);
+                streamWriter.WriteLine(student.department);
+                streamWriter.WriteLine(student.university);
+                streamWriter.WriteLine(student.attendance);
+                streamWriter.Close();
+                MessageBox.Show("Data is written in File    " + student.name);
+                idText.Text = "";
+                nameText.Text = "";
+                gpaText.Text = "";
+                departmentText.Text = "";
+                uniText.Text = "";
+            }
         }
 
         private void CreateProfileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -155,34 +190,15 @@ namespace StudentPortal
                     idSearchGrid.Rows[n].Cells[2].Value = listForId[i].gpa;
                     idSearchGrid.Rows[n].Cells[3].Value = listForId[i].department;
                     idSearchGrid.Rows[n].Cells[4].Value = listForId[i].university;
+                    break;
                     //idSearchGrid.Rows[n].Cells[5].Value = listForId[i].attendance;
                 }
             }
+            searchIdText.Text = "";
             // Empty Grid
         }
 
-        private void SeachNameBtn_Click(object sender, EventArgs e)
-        {
-            List<Student> listSearchName = new List<Student>();
-            getListFile(ref listSearchName);
-            searchNameGrid.Rows.Clear();
-            for(int i=0;i<listSearchName.Count;i++)
-            {
-                if(listSearchName[i].name==searchByName)
-                {
-                    MessageBox.Show("Name Found: " + listSearchName[i].name);
-
-                    int n = searchNameGrid.Rows.Add();
-                    searchNameGrid.Rows[n].Cells[0].Value = listSearchName[i].id;
-                    searchNameGrid.Rows[n].Cells[1].Value = listSearchName[i].name;
-                    searchNameGrid.Rows[n].Cells[2].Value = listSearchName[i].gpa;
-                    searchNameGrid.Rows[n].Cells[3].Value = listSearchName[i].department;
-                    searchNameGrid.Rows[n].Cells[4].Value = listSearchName[i].university;
-                    //searchNameGrid.Rows[n].Cells[5].Value = listSearchName[i].attendance;
-                }
-            }
-            // Empty Grid or it will add in the data
-        }
+     
 
         private void SearchByNameToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -264,7 +280,6 @@ namespace StudentPortal
         private void MarkAttenGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int indexAtten = e.RowIndex;
-            MessageBox.Show("Clicked Index is: " + indexAtten);
             List<Student> listAttenMark = new List<Student>();
             getListFile(ref listAttenMark);
             if(listAttenMark[indexAtten].attendance==true)
@@ -328,11 +343,16 @@ namespace StudentPortal
         {
             List<Student> listDelete = new List<Student>();
             getListFile(ref listDelete);
-            for (int i = 0; i < listDelete.Count; i++)
+            for (int i = 0; i < listDelete.Count-1; i++)
             {
                 if (listDelete[i].id == deleteId)
                 {
                     listDelete.RemoveAt(i);
+                    materialLabel7.Text = listDelete[i].name;
+                    materialLabel8.Text = listDelete[i].id;
+                    materialLabel9.Text = Convert.ToString(listDelete[i].gpa);
+                    materialLabel10.Text = listDelete[i].department;
+                    materialLabel11.Text = listDelete[i].university;
                 }
             }
             StreamWriter stream = new StreamWriter(path);
@@ -352,6 +372,40 @@ namespace StudentPortal
             MessageBox.Show("Record is Deleted Successfully");
         }
 
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(student.name))
+            {
+                MessageBox.Show("You haven't entered student name!\nPlease Enter Student Name First");
+            }
+            else
+            {
+                List<Student> listSearchName = new List<Student>();
+                getListFile(ref listSearchName);
+                searchNameGrid.Rows.Clear();
+                for (int i = 0; i < listSearchName.Count; i++)
+                {
+                    if (listSearchName[i].name == searchByName)
+                    {
+                        int n = searchNameGrid.Rows.Add();
+                        searchNameGrid.Rows[n].Cells[0].Value = listSearchName[i].id;
+                        searchNameGrid.Rows[n].Cells[1].Value = listSearchName[i].name;
+                        searchNameGrid.Rows[n].Cells[2].Value = listSearchName[i].gpa;
+                        searchNameGrid.Rows[n].Cells[3].Value = listSearchName[i].department;
+                        searchNameGrid.Rows[n].Cells[4].Value = listSearchName[i].university;
+                        //searchNameGrid.Rows[n].Cells[5].Value = listSearchName[i].attendance;
+                        searchNameText.Text = "";
+                    }
+                }
+            }
+            // Empty Grid or it will add in the data
+        }
+
+        private void SearchNameText_TextChanged(object sender, EventArgs e)
+        {
+            searchByName = searchNameText.Text;
+        }
+
         private void DeleteRecordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             deleteStuPanel.Visible = true;
@@ -362,11 +416,6 @@ namespace StudentPortal
             nameSearchPanel.Visible = false;
             allStudentPanel.Visible = false;
             topThreePanel.Visible = false;
-        }
-
-        private void SeachNameText_TextChanged(object sender, EventArgs e)
-        {
-            searchByName = searchNameText.Text;
         }
     }
 }

@@ -1,12 +1,12 @@
 E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\bin\Debug\StudentPortal.exe.config
 E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\bin\Debug\StudentPortal.exe
 E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\bin\Debug\StudentPortal.pdb
-E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj\Debug\StudentPortal.csprojAssemblyReference.cache
+E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\bin\Debug\MaterialSkin.dll
 E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj\Debug\StudentPortal.Form1.resources
 E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj\Debug\StudentPortal.Properties.Resources.resources
 E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj\Debug\StudentPortal.csproj.GenerateResource.cache
 E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj\Debug\StudentPortal.csproj.CoreCompileInputs.cache
+E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj\Debug\StudentPortal.csproj.CopyComplete
 E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj\Debug\StudentPortal.exe
 E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj\Debug\StudentPortal.pdb
-E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\bin\Debug\MaterialSkin.dll
-E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj\Debug\StudentPortal.csproj.CopyComplete
+E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj\Debug\StudentPortal.csprojAssemblyReference.cache
