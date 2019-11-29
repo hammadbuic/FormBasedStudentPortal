@@ -13,6 +13,8 @@ namespace StudentPortal
 {
     public partial class Form1 : Form
     {
+        String path = System.Configuration.ConfigurationManager.AppSettings["Path"];
+      
         Student student = new Student();
         String searchById, searchByName, deleteId;
         public Form1()
@@ -49,7 +51,7 @@ namespace StudentPortal
         }
         private void getListFile(ref List<Student> list)
         {
-            StreamReader streamReader = new StreamReader(@"E:\\BSE 5A\\VP\\VP assign 1\\VP Asssignment FormBasedStudentPortal\\StudentPortal\\data.txt");
+            StreamReader streamReader = new StreamReader(path);
             while (streamReader.EndOfStream != true)
             {
                 Student s = new Student();
@@ -92,7 +94,7 @@ namespace StudentPortal
         private void EnterRecord_Click(object sender, EventArgs e)
         {
             student.attendance = false;
-            StreamWriter streamWriter = new StreamWriter(@"E:\\BSE 5A\\VP\\VP assign 1\\VP Asssignment FormBasedStudentPortal\\StudentPortal\\data.txt", append: true);
+            StreamWriter streamWriter = new StreamWriter(path, append: true);
             streamWriter.WriteLine(student.id);
             streamWriter.WriteLine(student.name);
             streamWriter.WriteLine(student.gpa);
@@ -273,10 +275,10 @@ namespace StudentPortal
             {
                 listAttenMark[indexAtten].attendance = true;
             }
-            StreamWriter writer = new StreamWriter(@"E:\\BSE 5A\\VP\\VP assign 1\\VP Asssignment FormBasedStudentPortal\\StudentPortal\\data.txt");
+            StreamWriter writer = new StreamWriter(path);
             writer.Write("");
             writer.Close();
-            writer = File.AppendText(@"E:\\BSE 5A\\VP\\VP assign 1\\VP Asssignment FormBasedStudentPortal\\StudentPortal\\data.txt");
+            writer = File.AppendText(path);
             for (int i = 0;  i < listAttenMark.Count;i++)
             {
                 writer.WriteLine(listAttenMark[i].id);
@@ -333,10 +335,10 @@ namespace StudentPortal
                     listDelete.RemoveAt(i);
                 }
             }
-            StreamWriter stream = new StreamWriter(@"E:\\BSE 5A\\VP\\VP assign 1\\VP Asssignment FormBasedStudentPortal\\StudentPortal\\data.txt");
+            StreamWriter stream = new StreamWriter(path);
             stream.Write("");
             stream.Close();
-            stream = File.AppendText(@"E:\\BSE 5A\\VP\\VP assign 1\\VP Asssignment FormBasedStudentPortal\\StudentPortal\\data.txt");
+            stream = File.AppendText(path);
             for (int i = 0; i < listDelete.Count; i++)
             {
                 stream.WriteLine(listDelete[i].id);
@@ -368,3 +370,7 @@ namespace StudentPortal
         }
     }
 }
+// Deal with exceptions Empty textt boxes
+// Deal with Gpa text box should be double
+// Deal with id shouldn't accept if if it is already assigned
+// remove tool strip for search and replace it with radio buttons

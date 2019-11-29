@@ -1,12 +1,18 @@
-40
-hammad irshad
-3
-software
-islamic
-False
-21
+90
 salman
 3.2
 it
 bahria
-False
+True
+80
+hammad Ahmad
+4
+Software
+bahria
+True
+60
+Ali
+2.9
+software
+IIUI
+True

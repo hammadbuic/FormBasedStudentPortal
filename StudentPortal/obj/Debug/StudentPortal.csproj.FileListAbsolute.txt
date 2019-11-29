@@ -8,3 +8,5 @@ E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj
 E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj\Debug\StudentPortal.csproj.CoreCompileInputs.cache
 E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj\Debug\StudentPortal.exe
 E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj\Debug\StudentPortal.pdb
+E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\bin\Debug\MaterialSkin.dll
+E:\BSE 5A\VP\VP assign 1\VP Asssignment FormBasedStudentPortal\StudentPortal\obj\Debug\StudentPortal.csproj.CopyComplete
