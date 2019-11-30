@@ -16,7 +16,9 @@ namespace StudentPortal
         String path = System.Configuration.ConfigurationManager.AppSettings["Path"];
       
         Student student = new Student();
-        String searchById, searchByName, deleteId;
+        String  cgpa;
+        
+        
         public Form1()
         {
             InitializeComponent();
@@ -88,13 +90,12 @@ namespace StudentPortal
         private void NameText_TextChanged(object sender, EventArgs e)
         {
             student.name = nameText.Text;
-            
         }
 
         private void GpaText_TextChanged(object sender, EventArgs e)
         {
-            student.gpa = Convert.ToDouble(gpaText.Text);
-
+             cgpa = Convert.ToString(gpaText.Text);
+             
         }
 
         private void DepartmentText_TextChanged(object sender, EventArgs e)
@@ -111,7 +112,7 @@ namespace StudentPortal
         {
             //get list and check id
 
-            if (string.IsNullOrEmpty(student.id) || string.IsNullOrEmpty(student.name) || Double.IsNaN(student.gpa) || string.IsNullOrEmpty(student.department) || string.IsNullOrEmpty(student.university))
+            if (string.IsNullOrEmpty(student.id) || string.IsNullOrEmpty(student.name)  || string.IsNullOrEmpty(student.department) || string.IsNullOrEmpty(student.university))
             {
                 //Notify the user
                 MessageBox.Show("You left a field empty");
@@ -122,6 +123,7 @@ namespace StudentPortal
             }
             else
             {
+                student.gpa = Convert.ToDouble(cgpa);
                 student.attendance = false;
                 StreamWriter streamWriter = new StreamWriter(path, append: true);
                 streamWriter.WriteLine(student.id);
@@ -131,7 +133,7 @@ namespace StudentPortal
                 streamWriter.WriteLine(student.university);
                 streamWriter.WriteLine(student.attendance);
                 streamWriter.Close();
-                MessageBox.Show("Data is written in File    " + student.name);
+                MessageBox.Show("Record is saved for the student: " + student.name);
                 idText.Text = "";
                 nameText.Text = "";
                 gpaText.Text = "";
@@ -167,39 +169,8 @@ namespace StudentPortal
 
         private void SearchIdText_TextChanged(object sender, EventArgs e)
         {
-            searchById = searchIdText.Text;
-           
+                       
         }
-
-        private void SearchIdBtn_Click(object sender, EventArgs e)
-        {
-            //design function
-            List<Student> listForId = new List<Student>();
-            getListFile(ref listForId);
-            idSearchGrid.Rows.Clear();
-            for (int i = 0; i < listForId.Count; i++)
-            {
-                if (listForId[i].id == searchById)
-                {
-                    MessageBox.Show("Name: " + listForId[i].name);
-                    // learn grid and display data
-
-                    int n = idSearchGrid.Rows.Add();
-                    idSearchGrid.Rows[n].Cells[0].Value = listForId[i].id;
-                    idSearchGrid.Rows[n].Cells[1].Value = listForId[i].name;
-                    idSearchGrid.Rows[n].Cells[2].Value = listForId[i].gpa;
-                    idSearchGrid.Rows[n].Cells[3].Value = listForId[i].department;
-                    idSearchGrid.Rows[n].Cells[4].Value = listForId[i].university;
-                    break;
-                    //idSearchGrid.Rows[n].Cells[5].Value = listForId[i].attendance;
-                }
-            }
-            searchIdText.Text = "";
-            // Empty Grid
-        }
-
-     
-
         private void SearchByNameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             viewAttenPanel.Visible = false;
@@ -336,23 +307,24 @@ namespace StudentPortal
 
         private void DeleteStuText_TextChanged(object sender, EventArgs e)
         {
-            deleteId = deleteStuText.Text;
+         
         }
 
         private void DeleteStuBtn_Click(object sender, EventArgs e)
         {
+            string deleteId = deleteStuText.Text;
             List<Student> listDelete = new List<Student>();
             getListFile(ref listDelete);
-            for (int i = 0; i < listDelete.Count-1; i++)
+            for (int i = 0; i < listDelete.Count; i++)
             {
                 if (listDelete[i].id == deleteId)
                 {
-                    listDelete.RemoveAt(i);
                     materialLabel7.Text = listDelete[i].name;
                     materialLabel8.Text = listDelete[i].id;
                     materialLabel9.Text = Convert.ToString(listDelete[i].gpa);
                     materialLabel10.Text = listDelete[i].department;
                     materialLabel11.Text = listDelete[i].university;
+                    listDelete.RemoveAt(i);
                 }
             }
             StreamWriter stream = new StreamWriter(path);
@@ -372,9 +344,35 @@ namespace StudentPortal
             MessageBox.Show("Record is Deleted Successfully");
         }
 
+        private void IsSearchingBtn_Click(object sender, EventArgs e)
+        {
+            string searchById = searchIdText.Text;
+            //design function
+            List<Student> listForId = new List<Student>();
+            getListFile(ref listForId);
+            idSearchGrid.Rows.Clear();
+            for (int i = 0; i < listForId.Count; i++)
+            {
+                if (listForId[i].id == searchById)
+                {
+                    MessageBox.Show("Name: " + listForId[i].name);
+                    // learn grid and display data
+
+                    int n = idSearchGrid.Rows.Add();
+                    idSearchGrid.Rows[n].Cells[0].Value = listForId[i].id;
+                    idSearchGrid.Rows[n].Cells[1].Value = listForId[i].name;
+                    idSearchGrid.Rows[n].Cells[2].Value = listForId[i].gpa;
+                    idSearchGrid.Rows[n].Cells[3].Value = listForId[i].department;
+                    idSearchGrid.Rows[n].Cells[4].Value = listForId[i].university;
+                }
+            }
+            searchIdText.Text = "";
+            // Empty Grid
+        }
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(student.name))
+            string searchByName = searchNameText.Text;
+            if (string.IsNullOrEmpty(searchByName))
             {
                 MessageBox.Show("You haven't entered student name!\nPlease Enter Student Name First");
             }
@@ -403,7 +401,7 @@ namespace StudentPortal
 
         private void SearchNameText_TextChanged(object sender, EventArgs e)
         {
-            searchByName = searchNameText.Text;
+             
         }
 
         private void DeleteRecordToolStripMenuItem_Click(object sender, EventArgs e)

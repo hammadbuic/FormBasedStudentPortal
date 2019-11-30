@@ -9,7 +9,7 @@ hammad Ahmad
 4
 Software
 bahria
-False
+True
 60
 Ali
 2.9
@@ -22,15 +22,45 @@ awais
 food science
 uvaas
 False
-111
-asfand
-3
-ecnomics
-UOL
-True
 22
 ahsan
 2
 bs ecnomics
 iiui
+False
+123
+Zubair
+2.5
+Health Sciences
+Uvaas
+False
+345
+hammad zaheen
+3.4
+software
+bahria
+False
+567
+ibrahim
+2.9
+bs it
+islamic uni bahwalpur
+False
+5678
+kashif
+3.4
+Mechenical Engineering
+UET
+False
+0987
+umer
+3.6
+mbbs
+bzu
+False
+888
+hamza
+3.5
+BS IT
+kfueit
 False
