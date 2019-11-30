@@ -8,21 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
 namespace StudentPortal
 {
     public partial class Form1 : Form
     {
+        //Getting Path from App.config file
         String path = System.Configuration.ConfigurationManager.AppSettings["Path"];
-      
         Student student = new Student();
         String  cgpa;
-        
-        
         public Form1()
         {
             InitializeComponent();
         }
+        // Function for Checking if Id is already present in our file
         private bool isIdPresent(string str)
         {
             bool result=false;
@@ -39,10 +37,11 @@ namespace StudentPortal
         }
         static List<Student> getTopThreeStudents(ref int firstIndex, ref int secondIndex, ref int thirdIndex, List<Student> list)
         {
-            List<Student> resultList = new List<Student>();
+            List<Student> resultList = new List<Student>(); //Onitialized for top 3 Students
             firstIndex = 0;
             secondIndex = 0;
             thirdIndex = 0;
+            //Checking for top 3 Students
             for (int i = 1; i < list.Count; i++)
             {
                 if (list[firstIndex].gpa < list[i].gpa)
@@ -65,6 +64,7 @@ namespace StudentPortal
             resultList.Add(list[thirdIndex]);
             return resultList;
         }
+        // Function for getting data from file and adding in List
         private void getListFile(ref List<Student> list)
         {
             StreamReader streamReader = new StreamReader(path);
@@ -110,19 +110,19 @@ namespace StudentPortal
 
         private void EnterRecord_Click(object sender, EventArgs e)
         {
-            //get list and check id
-
             if (string.IsNullOrEmpty(student.id) || string.IsNullOrEmpty(student.name)  || string.IsNullOrEmpty(student.department) || string.IsNullOrEmpty(student.university))
             {
-                //Notify the user
+                //Checking if any of the field is  empty
                 MessageBox.Show("You left a field empty");
             }
             else if(isIdPresent(student.id))
             {
+                //Checking if the Id is already allocated to student
                 MessageBox.Show("This ID is already alloted to a Student!\nPlease Change it and try again");
             }
             else
             {
+                //Adding Student Record in File
                 student.gpa = Convert.ToDouble(cgpa);
                 student.attendance = false;
                 StreamWriter streamWriter = new StreamWriter(path, append: true);
@@ -144,6 +144,7 @@ namespace StudentPortal
 
         private void CreateProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Displaying Profile panel
             searchPanel.Visible = false;
             nameSearchPanel.Visible = false;
             deleteStuPanel.Visible = false;
@@ -156,6 +157,7 @@ namespace StudentPortal
 
         private void SearchByIDToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Displaying Name panel
             profilePanel.Visible = false;
             nameSearchPanel.Visible = false;
             deleteStuPanel.Visible = false;
@@ -173,6 +175,7 @@ namespace StudentPortal
         }
         private void SearchByNameToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Displaying Searcch by name panel
             viewAttenPanel.Visible = false;
             profilePanel.Visible = false;
             searchPanel.Visible = false;
@@ -186,6 +189,7 @@ namespace StudentPortal
 
         private void ListOfAllStudentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+           //Enabling All Student List Panel
             viewAttenPanel.Visible = false;
             profilePanel.Visible = false;
             searchPanel.Visible = false;
@@ -196,26 +200,21 @@ namespace StudentPortal
             allStudentPanel.Visible = true;
             allStudentGrid.Rows.Clear();
             List<Student> listForAll = new List<Student>();
-            getListFile(ref listForAll);
-            //testDataGrid.DataSource = listForAll;
+            getListFile(ref listForAll);    //Getting data from file in list
             for (int n = 0; n < listForAll.Count; n++)
             {
+                //displaying the list of all students in grid
                 int i = allStudentGrid.Rows.Add();
                 allStudentGrid.Rows[i].Cells[0].Value = listForAll[n].id;
                 allStudentGrid.Rows[i].Cells[1].Value = listForAll[n].name;
                 allStudentGrid.Rows[i].Cells[2].Value = listForAll[n].gpa;
                 allStudentGrid.Rows[i].Cells[3].Value = listForAll[n].department;
-                allStudentGrid.Rows[i].Cells[4].Value = listForAll[n].university;
-                //allStudentGrid.Rows[i].Cells[5].Value = listForAll[n].attendance;
-            }
-            // MessageBox.Show(listForAll[0].name);
-
-
+                allStudentGrid.Rows[i].Cells[4].Value = listForAll[n].university;            }
         }
 
         private void Top3StudentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //topThreeGrid.Rows.Clear();
+            //displaying top 3 students panel
             profilePanel.Visible = false;
             viewAttenPanel.Visible = false;
             deleteStuPanel.Visible = false;
@@ -225,16 +224,20 @@ namespace StudentPortal
             allStudentPanel.Visible = false;
             topThreePanel.Visible = true;
             List<Student> listForTop = new List<Student>();
+            //Taking data from file in list
             getListFile(ref listForTop);
             int firstLargest = -1;
             int secondLargest = -1;
             int thirdLargest = -1;
+            //calling function to return the list of top3 students
             List<Student> topThreeList=getTopThreeStudents(ref firstLargest, ref secondLargest, ref thirdLargest, listForTop);
+            //adding list to grid for displaying
             topThreeGrid.DataSource = topThreeList;
         }
 
         private void MarkAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Displaying mark attandance panel
             viewAttenPanel.Visible = false;
             markAttenPanel.Visible = true;
             deleteStuPanel.Visible = false;
@@ -244,14 +247,17 @@ namespace StudentPortal
             allStudentPanel.Visible = false;
             topThreePanel.Visible = false;
             List<Student> listAttenMark = new List<Student>();
+            //getting data in list from file
             getListFile(ref listAttenMark);
+            //displaying attendance list to mark
             markAttenGrid.DataSource = listAttenMark;
         }
 
         private void MarkAttenGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int indexAtten = e.RowIndex;
+            int indexAtten = e.RowIndex; //Taking index of which student's attandance is marked
             List<Student> listAttenMark = new List<Student>();
+            //Getting data from file in List
             getListFile(ref listAttenMark);
             if(listAttenMark[indexAtten].attendance==true)
             {
@@ -279,6 +285,7 @@ namespace StudentPortal
 
         private void ViewAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Displaying Panel For attandance view
             viewAttenPanel.Visible = true;
             markAttenPanel.Visible = false;
             profilePanel.Visible = false;
@@ -288,13 +295,15 @@ namespace StudentPortal
             topThreePanel.Visible = false;
             deleteStuPanel.Visible = false;
             List<Student> listView = new List<Student>();
+            //Getting data from file in List
             getListFile(ref listView);
             for (int i = 0; i < listView.Count; i++)
             {
                 int n = viewAttenGrid.Rows.Add();
                 viewAttenGrid.Rows[n].Cells[0].Value = listView[i].id;
                 viewAttenGrid.Rows[n].Cells[1].Value = listView[i].name;
-                if(listView[i].attendance==true)
+                //Placing Present or absent for display
+                if (listView[i].attendance==true)
                 {
                     viewAttenGrid.Rows[n].Cells[2].Value = "Present";
                 }
@@ -314,11 +323,13 @@ namespace StudentPortal
         {
             string deleteId = deleteStuText.Text;
             List<Student> listDelete = new List<Student>();
+            //getting data from file in list
             getListFile(ref listDelete);
             for (int i = 0; i < listDelete.Count; i++)
             {
                 if (listDelete[i].id == deleteId)
                 {
+                    // Displaying Deleting Record
                     materialLabel7.Text = listDelete[i].name;
                     materialLabel8.Text = listDelete[i].id;
                     materialLabel9.Text = Convert.ToString(listDelete[i].gpa);
@@ -327,12 +338,14 @@ namespace StudentPortal
                     listDelete.RemoveAt(i);
                 }
             }
+            // Empty Text File
             StreamWriter stream = new StreamWriter(path);
             stream.Write("");
             stream.Close();
             stream = File.AppendText(path);
             for (int i = 0; i < listDelete.Count; i++)
             {
+                // Writting updated list in text file
                 stream.WriteLine(listDelete[i].id);
                 stream.WriteLine(listDelete[i].name);
                 stream.WriteLine(listDelete[i].gpa);
@@ -346,6 +359,7 @@ namespace StudentPortal
 
         private void IsSearchingBtn_Click(object sender, EventArgs e)
         {
+            //Processing of Search Button
             string searchById = searchIdText.Text;
             //design function
             List<Student> listForId = new List<Student>();
@@ -356,8 +370,7 @@ namespace StudentPortal
                 if (listForId[i].id == searchById)
                 {
                     MessageBox.Show("Name: " + listForId[i].name);
-                    // learn grid and display data
-
+                    // Adding data in grid view for display
                     int n = idSearchGrid.Rows.Add();
                     idSearchGrid.Rows[n].Cells[0].Value = listForId[i].id;
                     idSearchGrid.Rows[n].Cells[1].Value = listForId[i].name;
@@ -391,12 +404,10 @@ namespace StudentPortal
                         searchNameGrid.Rows[n].Cells[2].Value = listSearchName[i].gpa;
                         searchNameGrid.Rows[n].Cells[3].Value = listSearchName[i].department;
                         searchNameGrid.Rows[n].Cells[4].Value = listSearchName[i].university;
-                        //searchNameGrid.Rows[n].Cells[5].Value = listSearchName[i].attendance;
                         searchNameText.Text = "";
                     }
                 }
             }
-            // Empty Grid or it will add in the data
         }
 
         private void SearchNameText_TextChanged(object sender, EventArgs e)
@@ -406,7 +417,7 @@ namespace StudentPortal
 
         private void DeleteRecordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            deleteStuPanel.Visible = true;
+            deleteStuPanel.Visible = true;      //Showing delete panel
             viewAttenPanel.Visible = false;
             markAttenPanel.Visible = false;
             profilePanel.Visible = false;
@@ -417,7 +428,3 @@ namespace StudentPortal
         }
     }
 }
-// Deal with exceptions Empty textt boxes
-// Deal with Gpa text box should be double
-// Deal with id shouldn't accept if if it is already assigned
-// remove tool strip for search and replace it with radio buttons

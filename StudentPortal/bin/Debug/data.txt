@@ -58,9 +58,9 @@ umer
 mbbs
 bzu
 False
-888
-hamza
-3.5
-BS IT
-kfueit
+555
+Abdullah
+2.5
+Software
+Bahria University
 False
